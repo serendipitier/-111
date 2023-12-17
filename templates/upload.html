@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+	<title>电子公文上传</title>
+	<link rel="stylesheet" href="{% static "css/reset.css" %}" />
+	<link rel="stylesheet" href="{% static "css/upload.css" %}" />
+    <link rel="shortcut icon" href="{% static "favicon.ico" %}">
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/user.js" %}"></script>
+</head>
+<body>
+<div class="page">
+	<div class="loginwarrp">
+		<div class="logo">电子公文上传</div>
+        <div class="login_form">
+			<form id="Login" enctype="multipart/form-data" name="upload" method="post" action="">
+                {% csrf_token %}
+				<li class="login-item">
+					<span>公文标题：</span>
+					<input type="text" name="title" class="login_input">
+                    <span id="count-msg" class="error"></span>
+				</li>
+				<li class="login-item">
+					<span>发文机关：</span>
+					<input type="text" name="office" class="login_input">
+                    <span id="password-msg" class="error"></span>
+				</li>
+                    <li class="login-item">
+                        <span>公文文种：</span>
+                        <select name="type" class="login_input">
+                        <option value="1" selected="selected">条例</option>
+                        <option value="2">请示</option>
+                        <option value="3">决定</option>
+                        <option value="4">命令</option>
+                        <option value="5">指示</option>
+                        <option value="6">批复</option>
+                        <option value="7">通知</option>
+                        <option value="8">通报</option>
+                        <option value="9">公告</option>
+                        <option value="10">通告</option>
+                        <option value="11">议案</option>
+                        <option value="12">报告</option>
+                        <option value="13">涵</option>
+                        <option value="14">会议纪要</option>
+                        </select>
+                        <span id="password-msg" class="error"></span>
+                    </li>
+                    <li class="login-item">
+                        <span>选择密级：</span>
+                        <select name="sec" class="login_input">
+                        <option value="0" selected="selected">公开</option>
+                        <option value="1">秘密</option>
+                        </select>
+                        <span id="password-msg" class="error"></span>
+                    </li>
+                <li class="login-item">
+                    <span>公文文件(pdf)：</span>
+                    <input type="file" name="myfile">
+                </li>
+                <li class="login-item">
+                    <span>公文摘要(推荐txt)：</span>
+                    <input type="file" name="summary">
+                </li>
+                <li class="login-item">
+                    <span>公文照片(推荐jpg)：</span>
+                    <input type="file" name="image">
+                </li>
+                <li class="login-sub">
+					<input type="submit" name="Submit" value="确定">
+				</li>
+           </form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	window.onload = function() {
+		var config = {
+			vx : 4,
+			vy : 4,
+			height : 2,
+			width : 2,
+			count : 100,
+			color : "121, 162, 185",
+			stroke : "100, 200, 180",
+			dist : 6000,
+			e_dist : 20000,
+			max_conn : 10
+		};
+		CanvasParticle(config);
+	}
+</script>
+<script src="{% static "js/canvas-particle.js" %}"></script>
+</body>
+</html>
